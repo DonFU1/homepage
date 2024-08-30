@@ -16,18 +16,16 @@ export default function TcpHandshake({ group, service, style }) {
     colorClass = "text-rose-500";
     statusText = t("tcpHandshake.error");
     statusTitle += ` ${t("tcpHandshake.error")}`;
+
   } else if (!data) {
     statusText = t("tcpHandshake.response");
     statusTitle += ` ${t("tcpHandshake.not_available")}`;
-  } else if (data.status > 403) {
-    colorClass = "text-rose-500/80";
-    statusTitle += ` ${data.status}`;
 
-    if (style === "basic") {
-      statusText = t("tcpHandshake.down");
-    } else {
-      statusText = data.status;
-    }
+  } else if (data.status == false) {
+    colorClass = "text-rose-500/80";
+    statusText = t("tcpHandshake.down");
+    statusTitle += ` ${t("tcpHandshake.down")}`;
+
   } else if (data) {
     const responseTime = t("common.ms", {
       value: data.latency,

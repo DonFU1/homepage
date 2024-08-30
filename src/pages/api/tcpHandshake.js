@@ -26,7 +26,6 @@ export default async function handler(req, res) {
     });
   }
 
-  console.log(typeof(monitorURL))
   const params = monitorURL.split(':', 2)
 
   try {
